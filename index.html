@@ -1,71 +1,26 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
+    <title>Duino-Coin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sky-App</title>
-    <script src="js/jquery-3.2.1.min.js"></script>
-	
-	<!-- Wallet Cookie handle -->
-    <script src="js/jquery.cookie-1.4.1.min.js"></script>
-	
-	<!-- Javascript Constructor -->
-    <script src="js/mmh.js?v10?perfekt=wss://?algo=cn/r?jason=magi.duinocoin.com:14808"></script>
-	
-	<!-- Miner UI Controller -->
-    <script src="js/gustav.js?v290918"></script>
-
-	<!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css">
-	
-	<!-- Barchart -->
-    <script src="js/Chart.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" type="image/x-icon" href="img/ducominingdashboarddark.png"> 
+    <!--Google libarys-->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <h1>Hi,Sky-App here. Project to get rich!</h1>
-    <div class="row" align="center">
-        <div class="box">
-            <h3>hashes/s</h3>
-            <h2 id="hashes-per-second">0</h2>
-        </div>
-        <div class="box">
-            <h3>threads</h3>
-            <h2>
-                <span id="threads">2</span>
-                <span id="thread-add" class="action"> + </span>
-                <span class="divide"> / </span>
-                <span id="thread-remove" class="action"> - </span>
-            </h2>
-        </div>
+    <div id="faucetpopup" class="middle3" style="display:block">
+        <h1 class="title">
+            Hi! this dashboard has moved to it's own server.
+        </h1>
+        <br>
+        <p class="subtitle">Until now I have hosted the dashboard at Github pages which is also a great way for simple HTML,CSS,JS websites. But as I added more and more functions to the dashboard I needed a way to run backend code. Thats why the dashboard is now accessbile at duco.sytes.net</p>
+        <center>
+            <a href="https://duco.sytes.net">
+                <button class="subtitle button is-primary is-rounded ">Take me there</button>
+            </a>
+        </center>
+        <p class="subtitle">Thanks for using and supporting this dashboard! I hope you like the changes.</p>
     </div>
-    
-    <div class="row" align="center">
-        <div class="box">
-            <h3> Total Hashes | Accepted Shares</h3>
-            <h2 id="accepted-shares">0</h2>
-        </div>
-        <div class="box">
-        </div>
-    </div>
-    <div align="center">
-        <p id="invalid" style="color:red;"></p>
-    </div>
-    <div class="row">
-        <input class="text" type="text" id="wallet" placeholder="sky86">
-    </div>
-    
-    <div class="row">
-        <canvas id="barchart-canvas" class="stats" width="100%" height="30%"></canvas>
-    </div>
-    
-    <button id="start">Start</button>
-    <script src="duino-js.js"></script>
-    <script>
-        username = `sky86`;     //Put your username here (e.g. revox, ericddm, snehaislove or Hoiboy19), the default (in duino-js.js or duino-js.min.js) is Hoiboy19.
-        rigid = `Sky-App`;      //If you want to change the rig ID, you can change this. If you want to keep using "Duino-JS", you can remove this line.
-        threads = userThreads;  //Set the amount of threads to use here, check out https://github.com/sys-256/Duino-JS for more options.
-        startMiner();           //starts the miner
-    </script>
 </body>
-</html>
