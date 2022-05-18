@@ -25,13 +25,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet"> 
 
         <!--hCaptcha libary -Only loaded if cookies are accepted-->
-        <?php
+        <!--?php
             if(isset($_COOKIE["cookiesaccepted"])){
                 if($_COOKIE["cookiesaccepted"] == "true"){
                     echo"<!--hCAPTCHA libary--><script src='https://www.hCaptcha.com/1/api.js' async defer></script>";
                 }
             }
-        ?>
+        ?-->
         <!--For icons of FA-->
         <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
         <!--For gauges-->
@@ -62,7 +62,7 @@
                     <div class="tabs">
                         <ul>
                           <li id="tab1" class="is-active"><a onclick="showmy();">My Data</a></li>
-                          <li id="tab2" class=""><a onclick="shownetwork();">Network data</a></li>
+                          <!-- li id="tab2" class=""><a onclick="shownetwork();">Network data</a></li -->
                         </ul>
                     </div>
                     
@@ -235,7 +235,7 @@
                                 </div>
                             </div>
                             <br>
-                            <table>
+                            <!-- table>
                                 <tr>
                                     <td> <a href="https://discord.gg/QpAnyWdxjk"> <img loading="lazy" class="imgi2" src="img/discord.png"></a></td>
                                     <td><a href="https://server.duinocoin.com/webminer.html"><img loading="lazy" class="imgi2" src="img/webminer.png"></a></td>
@@ -244,7 +244,7 @@
                                     <td><a href="https://github.com/Lulaschkas/duco-mining-dashboard"><img loading="lazy" class="imgi2" src="img/github.png"></a></td>
                                 </tr>
 
-                            </table>
+                            </table -->
                             <div class="line3"></div>
                             <center>
                                 <a href="privacy.html"><button class="button is-info is-light">Privcy policy/Legal Notice</button></a>
