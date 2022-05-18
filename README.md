@@ -13,3 +13,5 @@ Fauceet
 4. https://duco.sytes.net/
 
 5. http://faucetforduino.online/
+
+6. https://faucet.nobodyvisit.com/faucet.php
