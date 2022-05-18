@@ -24,14 +24,7 @@
         <!--Google libarys-->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet"> 
 
-        <!--hCaptcha libary -Only loaded if cookies are accepted-->
-        <?php
-            if(isset($_COOKIE["cookiesaccepted"])){
-                if($_COOKIE["cookiesaccepted"] == "true"){
-                    echo"<!--hCAPTCHA libary--><script src='https://www.hCaptcha.com/1/api.js' async defer></script>";
-                }
-            }
-        ?>
+
         <!--For icons of FA-->
         <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
         <!--For gauges-->
@@ -430,7 +423,7 @@
 
                 </center>
                 <br>
-                <a href="index.php">
+                <a href="index.html">
                     <button id="btn">
                         <span class="icon">
                             <i class="fas fa-arrow-circle-left fa-3x"></i>
@@ -763,34 +756,6 @@
                             </div>
                         </div>
                     </div>  
-                    <div :style="faucetpopup" class="middle3" id="faucetpopup">
-                        <button v-on:click="solutionclose()"class="btn" id="solutionclosebtn">
-                                    <span class="icon">
-                                        <i class="fas fa-times-circle  fa-3x"></i>
-                                    </span>
-                        </button>
-                        <p class="title">Solve the Quiz</p>
-                        <p>Did you thought you could just enter your username and get free ducos?</p>
-                        <p>You have to work to get them, solve this simple quiz and they are yours!</p>
-                        <br>
-                        <?php
-                            //Require quiz and echo question if session cookie was set 
-                            if(isset($_SESSION["quiz"])){
-                                require_once("quiz.php");
-                                echo  $tasks[$_SESSION["quiz"]];
-                            }
-                        ?>
-                        <br>
-                        <div class="h-captcha" data-sitekey="95e3ff02-1c51-4904-8ba4-d3c6abee2b5b"></div>
-                        <br>
-                        <input v-model="solution" class="input is-warning is-rounded" id="faucetsolution" placeholder="solution"> 
-                            <button v-on:click="submitsolution()"class="btn" id="solutionbtn">
-                                <span class="icon has-text-success">
-                                    <i class="fas fa-play-circle  fa-3x"></i>
-                                </span>
-                            </button>
-                    </div>
-                    </div>
                 
             </div>
             </article>
