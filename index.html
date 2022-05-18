@@ -42,14 +42,6 @@
         <!--Google libarys-->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet"> 
 
-        <!--hCaptcha libary -Only loaded if cookies are accepted-->
-        <?php
-            if(isset($_COOKIE["cookiesaccepted"])){
-                if($_COOKIE["cookiesaccepted"] == "true"){
-                    echo"<!--hCAPTCHA libary--><script src='https://www.hCaptcha.com/1/api.js' async defer></script>";
-                }
-            }
-        ?>
         <!--For icons of FA-->
         <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
         <!--For gauges-->
@@ -558,41 +550,14 @@
                                     </span>
                                 </button>
                                 </div>
-                                <br>
-                                <table class="table transparent is-narrow is-hoverable is-fullwidth">
-                                    <tr>
-                                        <th>Balance</th>
-                                        <th>{{ balance }}</th>
-
-                                    </tr>
-                                    <tr>
-                                        <th>Transactions</th>
-                                        <th>{{ transactions }}</th>
-
-                                    </tr>
-                                    <tr>
-                                        <th>Users</th>
-                                        <th>{{ users }}</th>
-
-                                    </tr>
-                                    <tr>
-                                        <th>Last user</th>
-                                        <th>{{ last }}</th>
-
-                                    </tr>
-                                    <tr>
-                                        <th>Last donator</th>
-                                        <th>{{ donator }}</th>
-
-                                    </tr>
-                                </table>                            
+                                <br>                           
                         </div>
                     </div>
                     <div class="column is-6">
                         <div id="card">
                             <a href="https://duinocoin.com"><img id="ducoimg" src="img/duco.png"></a>
                             <img id="ducoimg2" src="img/ducominingdashboarddark.png">
-                            <p id="login_header">Duino-Coin mining Dashboard</p>
+                            <p id="login_header">DuinoCoin mining Dashboard</p>
                             
                             <div class="line"></div>
 
@@ -624,24 +589,6 @@
             </article>
         </div>
 
-    </div>
-    <div id="vuecookiebanner">
-        <div :style="banner" id="banner" class="cookie-banner content" >
-            <p >This website needs <strong>Cookies</strong> to work properly. Cookies are only used when they are strictly necessary. We use them for: </p>
-            <ul>
-                <li>Knowing if a user already used the faucet today</li>
-                <li>Verifying that the user using the faucet is a real human through <a href="https://www.hcaptcha.com/">hCaptcha</a></li>
-            </ul>
-            <p>If you agree you allow us to save cookies on your device. This also includes the processing of your data in the USA by hCAPTCHA.</p>
-            <p>You can find more information in our <a href="privacy.html">privacy policy</a> and the privacy policy of <a href="https://www.hcaptcha.com/privacy/">hCaptcha</a>
-            <p>If you don't agree we wont save non technically necessary cookies on your device but we also can't provide the faucet for you.</p>
-            <button v-on:click="accept()" class="button is-success">I agree</button>
-            <button v-on:click="reject()" class="button is-danger is-light">I do not agree</button>
-
-        </div>
-        <div class="cookieinfo">
-            <button v-on:click="show()" class="button">🍪</button>            
-        </div>
     </div>
 
     <script type="text/javascript" src="js/vue.global.prod.js"></script>
