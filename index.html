@@ -24,16 +24,6 @@
         <!--Google libarys-->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet"> 
 
-        <!--hCaptcha libary -Only loaded if cookies are accepted-->
-        <!--
-        <?php
-            if(isset($_COOKIE["cookiesaccepted"])){
-                if($_COOKIE["cookiesaccepted"] == "true"){
-                    echo"<!--hCAPTCHA libary--><script src='https://www.hCaptcha.com/1/api.js' async defer></script>";
-                }
-            }
-        ?> 
-        -->
         <!--For icons of FA-->
         <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
         <!--For gauges-->
@@ -165,97 +155,11 @@
                                                 <p>Click on an image to see all your miners.</p>
                                             </article>
                                         </div>
-                                        <div class="tile is-parent is-vertical">
-                                            <article class="tile is-child has-background-light2">
-                                                <div class="cardheader">
-                                                    <div class="iconr">
-                                                        <i class="fas fa-calendar-check fa-2x"></i>
-                                                        <span class="helptext">The estimated card calculates the estimated duco per day based on <br> changes on the users balance. Avg. daily is more accurat but slower because it takes the data from the last 2 minutes. </span>
-                                                    </div>
-                                                    
-                                                    <p class="title">Estimated</p>
-                                                </div>
-                                                <table id="estimatedtable">
-                                                    <tr>
-                                                        <td class="subtitle">DUCOs Per day:</td>
-                                                        <b><td id="perdayc" class="estimated">Loading</td></b>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="subtitle">DUCOs Per week:</td>
-                                                        <b><td id="perweek" class="estimated">Loading</td></b>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="subtitle">DUCOs Per month:</td>
-                                                        <b><td id="permonth" class="estimated">Loading</td></b>
-                                                    </tr>
-                                                </table>    
-                                            </article>
-                                            <article class="tile is-child has-background-light2">
-                                                <div class="cardheader">
-                                                    <div class="iconr">
-                                                        <i class="fas fa-exclamation-circle fa-2x"></i>
-                                                        <span class="helptext">This card shows possible problems with your miners based on common issues. </span>
-                                                    </div>
-                                                    <p class="title" id="probtitle">Problems (Beta)</p>
-                                                </div>
-                                                <div class="subtitle" id="problemt" style="height: 110%; max-height: 300px; min-height: 100px; overflow:auto;">We have not been able to analyse your Miners. </div>
-                                            </article>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <br>
-                            <div class="tile is-ancestor ">
-                                <div class="tile is-vertical is-12">
-                                    <div class="tile">
-                                        
-                                        <article class="tile is-child has-background-light2">
-                                            <div class="cardheader">
-                                            <p class="title">Hashrate & Connection Graphs</p>
-                                        </div>
-                                            <div class="tabs">
-                                                <ul>
-                                                  <li id="tab3" class="is-active"><a onclick="showhashrate()" id="showhashrate">Hashrate and Daily</a></li>
-                                                  <li id="tab4" class=""><a onclick="showconnections()" id="showconnections">Connections</a></li>
-                                                </ul>
-                                            </div>
-                                            <div id="chart">
-                                                <div id="hashrate_chart_div">
-                                                    <div class="chart-container">
-                                                        <canvas id="hashrate_chart"></canvas>
-                                                    </div>        
-                                                </div>
-                                                <div id="connection_chart_div">
-                                                    <div class="chart-container">
-                                                        <canvas  id="connection_chart"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </article>
-                                    </div>
-                                </div>
-                            </div>
                             <br>
-                            <!-- <table>
-                                <tr>
-                                    <td> <a href="https://discord.gg/QpAnyWdxjk"> <img loading="lazy" class="imgi2" src="img/discord.png"></a></td>
-                                    <td><a href="https://server.duinocoin.com/webminer.html"><img loading="lazy" class="imgi2" src="img/webminer.png"></a></td>
-                                    <td><a href="https://duinocoin.com"><img loading="lazy" class="imgi2" src="img/duco.png"></a></td>
-                                    <td><a href="https://wallet.duinocoin.com"><img loading="lazy" class="imgi2" src="img/wallet.png"></a></td>
-                                    <td><a href="https://github.com/Lulaschkas/duco-mining-dashboard"><img loading="lazy" class="imgi2" src="img/github.png"></a></td>
-                                </tr>
-
-                            </table> -->
-                            <div class="line3"></div>
-                            <center>
-                                <a href="privacy.html"><button class="button is-info is-light">Privcy policy/Legal Notice</button></a>
-                                <a href="about.html"><button  class="button is-success is-light">About</button></a>
-                                <a href="fixes.html" ><button class="button is-danger is-light">Fix problems</button></a>
-                                <a href="whatsduco.html"><button  class="button is-warning is-light">What is duco?</button></a>
-
-
-                            </center>
                         </div>
                     </div>
                     <div id="dashboardd">
