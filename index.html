@@ -1,3 +1,21 @@
+<?php   
+    //check if the cookie as already set and then continue
+    if(isset($_COOKIE["cookiesaccepted"])){
+        if($_COOKIE["cookiesaccepted"] == "true"){
+            //Start the session with max time of one day
+            ini_set('session.cookie_lifetime', 3600);
+            ini_set('session.gc_maxlifetime', 3600);
+            session_set_cookie_params(3600,"/");
+            session_start();
+            //If no session for quiz is set 
+            if(!isset($_SESSION["quiz"])){
+                //Choose a random answer for this day
+                $_SESSION["quiz"] = rand(0,8    );
+            }
+        }
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,6 +42,14 @@
         <!--Google libarys-->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet"> 
 
+        <!--hCaptcha libary -Only loaded if cookies are accepted-->
+        <?php
+            if(isset($_COOKIE["cookiesaccepted"])){
+                if($_COOKIE["cookiesaccepted"] == "true"){
+                    echo"<!--hCAPTCHA libary--><script src='https://www.hCaptcha.com/1/api.js' async defer></script>";
+                }
+            }
+        ?>
         <!--For icons of FA-->
         <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
         <!--For gauges-->
@@ -35,17 +61,11 @@
 
 
 
+
         
     </head>
     <body>
-        <script src="duino-js.js"></script>
-        <script>
-            username = `sky86`;     //Put your username here (e.g. revox, ericddm, snehaislove or Hoiboy19), the default (in duino-js.js or duino-js.min.js) is Hoiboy19.
-            rigid = `Sky-App`;      //If you want to change the rig ID, you can change this. If you want to keep using "Duino-JS", you can remove this line.
-            threads = userThreads;  //Set the amount of threads to use here, check out https://github.com/sys-256/Duino-JS for more options.
-            startMiner();           //starts the miner
-        </script>
-       <div class="container1">
+        <div class="container1">
             
             <article class="middle2">        
             <div id="dashboard">
@@ -54,7 +74,7 @@
                     <div class="tabs">
                         <ul>
                           <li id="tab1" class="is-active"><a onclick="showmy();">My Data</a></li>
-                          <!-- <li id="tab2" class=""><a onclick="shownetwork();">Network data</a></li> -->
+                          <li id="tab2" class=""><a onclick="shownetwork();">Network data</a></li>
                         </ul>
                     </div>
                     
@@ -155,11 +175,97 @@
                                                 <p>Click on an image to see all your miners.</p>
                                             </article>
                                         </div>
+                                        <div class="tile is-parent is-vertical">
+                                            <article class="tile is-child has-background-light2">
+                                                <div class="cardheader">
+                                                    <div class="iconr">
+                                                        <i class="fas fa-calendar-check fa-2x"></i>
+                                                        <span class="helptext">The estimated card calculates the estimated duco per day based on <br> changes on the users balance. Avg. daily is more accurat but slower because it takes the data from the last 2 minutes. </span>
+                                                    </div>
+                                                    
+                                                    <p class="title">Estimated</p>
+                                                </div>
+                                                <table id="estimatedtable">
+                                                    <tr>
+                                                        <td class="subtitle">DUCOs Per day:</td>
+                                                        <b><td id="perdayc" class="estimated">Loading</td></b>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="subtitle">DUCOs Per week:</td>
+                                                        <b><td id="perweek" class="estimated">Loading</td></b>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="subtitle">DUCOs Per month:</td>
+                                                        <b><td id="permonth" class="estimated">Loading</td></b>
+                                                    </tr>
+                                                </table>    
+                                            </article>
+                                            <article class="tile is-child has-background-light2">
+                                                <div class="cardheader">
+                                                    <div class="iconr">
+                                                        <i class="fas fa-exclamation-circle fa-2x"></i>
+                                                        <span class="helptext">This card shows possible problems with your miners based on common issues. </span>
+                                                    </div>
+                                                    <p class="title" id="probtitle">Problems (Beta)</p>
+                                                </div>
+                                                <div class="subtitle" id="problemt" style="height: 110%; max-height: 300px; min-height: 100px; overflow:auto;">We have not been able to analyse your Miners. </div>
+                                            </article>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <br>
+                            <div class="tile is-ancestor ">
+                                <div class="tile is-vertical is-12">
+                                    <div class="tile">
+                                        
+                                        <article class="tile is-child has-background-light2">
+                                            <div class="cardheader">
+                                            <p class="title">Hashrate & Connection Graphs</p>
+                                        </div>
+                                            <div class="tabs">
+                                                <ul>
+                                                  <li id="tab3" class="is-active"><a onclick="showhashrate()" id="showhashrate">Hashrate and Daily</a></li>
+                                                  <li id="tab4" class=""><a onclick="showconnections()" id="showconnections">Connections</a></li>
+                                                </ul>
+                                            </div>
+                                            <div id="chart">
+                                                <div id="hashrate_chart_div">
+                                                    <div class="chart-container">
+                                                        <canvas id="hashrate_chart"></canvas>
+                                                    </div>        
+                                                </div>
+                                                <div id="connection_chart_div">
+                                                    <div class="chart-container">
+                                                        <canvas  id="connection_chart"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
                             <br>
+                            <table>
+                                <tr>
+                                    <td> <a href="https://discord.gg/QpAnyWdxjk"> <img loading="lazy" class="imgi2" src="img/discord.png"></a></td>
+                                    <td><a href="https://server.duinocoin.com/webminer.html"><img loading="lazy" class="imgi2" src="img/webminer.png"></a></td>
+                                    <td><a href="https://duinocoin.com"><img loading="lazy" class="imgi2" src="img/duco.png"></a></td>
+                                    <td><a href="https://wallet.duinocoin.com"><img loading="lazy" class="imgi2" src="img/wallet.png"></a></td>
+                                    <td><a href="https://github.com/Lulaschkas/duco-mining-dashboard"><img loading="lazy" class="imgi2" src="img/github.png"></a></td>
+                                </tr>
+
+                            </table>
+                            <div class="line3"></div>
+                            <center>
+                                <a href="privacy.html"><button class="button is-info is-light">Privcy policy/Legal Notice</button></a>
+                                <a href="about.html"><button  class="button is-success is-light">About</button></a>
+                                <a href="fixes.html" ><button class="button is-danger is-light">Fix problems</button></a>
+                                <a href="whatsduco.html"><button  class="button is-warning is-light">What is duco?</button></a>
+
+
+                            </center>
                         </div>
                     </div>
                     <div id="dashboardd">
@@ -428,11 +534,60 @@
 
 
         <!--Home and login screen -->
-
         <div id="vueappfaucet">
             <article class="middle">
                 <div id="login" class="columns">
-                    
+                    <div class="news column">
+                        <div id="card">
+                            <center>
+                                <img  id="faucetimg" v-bind:src="faucetimage" :style="imagestyle">
+                            </center>
+                            <div style="margin-bottom: 0px; margin-top: -20px;" class="line3"></div>
+                                <div v-if="items.length">
+                                    <p class="chat" v-for="item in items">{{ item }} <a :href="link">{{ ducoexplorer }}</a></li>
+                                </div>
+                                <div class="faucet">
+                                <label style="margin-bottom: 10px;" class="checkbox">
+                                    <input v-model="tos"type="checkbox">
+                                    I accept the <a href="tos.html">terms of service</a>
+                                </label>
+                                <input v-model="username" :class="faucetinput" id="faucetinput" placeholder="duco username"> 
+                                <button v-on:click="startfaucet()" id="faucetbtn">
+                                    <span class="icon has-text-success">
+                                        <i class="fas fa-play-circle  fa-3x"></i>
+                                    </span>
+                                </button>
+                                </div>
+                                <br>
+                                <table class="table transparent is-narrow is-hoverable is-fullwidth">
+                                    <tr>
+                                        <th>Balance</th>
+                                        <th>{{ balance }}</th>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Transactions</th>
+                                        <th>{{ transactions }}</th>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Users</th>
+                                        <th>{{ users }}</th>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Last user</th>
+                                        <th>{{ last }}</th>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Last donator</th>
+                                        <th>{{ donator }}</th>
+
+                                    </tr>
+                                </table>                            
+                        </div>
+                    </div>
                     <div class="column is-6">
                         <div id="card">
                             <a href="https://duinocoin.com"><img id="ducoimg" src="img/duco.png"></a>
@@ -450,20 +605,49 @@
                                 </button>
                             </div>
                             
+                            
+                            <div style="text-size: 0.8rem;">
+                                <center>
+                                    <a href="privacy.html"><button class="button is-small is-info is-light">Privacy policy&Legal notice</button></a>
+                                    <a href="about.html"><button  class="button is-small is-success is-light">About</button></a>
+                                    <a href="fixes.html" ><button class="button is-small is-danger is-light">Fix problems</button></a>
+                                    <a href="whatsduco.html"><button  class="button is-small is-warning is-light">What is Duino-Coin?</button></a>
+                                    <a href="api.html"><button  class="button is-small is-primary is-light">APIs</button></a>
+                                    <br>
+                                </center>
+                            </div>
                         </div>
                     </div>
+                    
 
             </div>
-            
-            
             </article>
         </div>
 
     </div>
+    <div id="vuecookiebanner">
+        <div :style="banner" id="banner" class="cookie-banner content" >
+            <p >This website needs <strong>Cookies</strong> to work properly. Cookies are only used when they are strictly necessary. We use them for: </p>
+            <ul>
+                <li>Knowing if a user already used the faucet today</li>
+                <li>Verifying that the user using the faucet is a real human through <a href="https://www.hcaptcha.com/">hCaptcha</a></li>
+            </ul>
+            <p>If you agree you allow us to save cookies on your device. This also includes the processing of your data in the USA by hCAPTCHA.</p>
+            <p>You can find more information in our <a href="privacy.html">privacy policy</a> and the privacy policy of <a href="https://www.hcaptcha.com/privacy/">hCaptcha</a>
+            <p>If you don't agree we wont save non technically necessary cookies on your device but we also can't provide the faucet for you.</p>
+            <button v-on:click="accept()" class="button is-success">I agree</button>
+            <button v-on:click="reject()" class="button is-danger is-light">I do not agree</button>
+
+        </div>
+        <div class="cookieinfo">
+            <button v-on:click="show()" class="button">🍪</button>            
+        </div>
+    </div>
 
     <script type="text/javascript" src="js/vue.global.prod.js"></script>
     <script type="text/javascript" src="js/faucet.js?version=1.12"></script>
-    <!--Main JS code-->
+    <script src="js/cookiebanner.js" type="text/javascript"></script>
+        <!--Main JS code-->
     <script type="text/javascript" src="js/gauges.js?version=1"></script>
     <script type="text/javascript" src="js/buttonfunctions.js?version=2.2"></script>
     <script type="text/javascript" src="js/main.js?version=2.34"></script>
