@@ -25,13 +25,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet"> 
 
         <!--hCaptcha libary -Only loaded if cookies are accepted-->
-        <!--?php
+        <!--
+        <?php
             if(isset($_COOKIE["cookiesaccepted"])){
                 if($_COOKIE["cookiesaccepted"] == "true"){
                     echo"<!--hCAPTCHA libary--><script src='https://www.hCaptcha.com/1/api.js' async defer></script>";
                 }
             }
-        ?-->
+        ?> 
+        -->
         <!--For icons of FA-->
         <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
         <!--For gauges-->
@@ -62,7 +64,7 @@
                     <div class="tabs">
                         <ul>
                           <li id="tab1" class="is-active"><a onclick="showmy();">My Data</a></li>
-                          <!-- li id="tab2" class=""><a onclick="shownetwork();">Network data</a></li -->
+                          <!-- <li id="tab2" class=""><a onclick="shownetwork();">Network data</a></li> -->
                         </ul>
                     </div>
                     
@@ -235,7 +237,7 @@
                                 </div>
                             </div>
                             <br>
-                            <!-- table>
+                            <!-- <table>
                                 <tr>
                                     <td> <a href="https://discord.gg/QpAnyWdxjk"> <img loading="lazy" class="imgi2" src="img/discord.png"></a></td>
                                     <td><a href="https://server.duinocoin.com/webminer.html"><img loading="lazy" class="imgi2" src="img/webminer.png"></a></td>
@@ -244,7 +246,7 @@
                                     <td><a href="https://github.com/Lulaschkas/duco-mining-dashboard"><img loading="lazy" class="imgi2" src="img/github.png"></a></td>
                                 </tr>
 
-                            </table -->
+                            </table> -->
                             <div class="line3"></div>
                             <center>
                                 <a href="privacy.html"><button class="button is-info is-light">Privcy policy/Legal Notice</button></a>
@@ -522,6 +524,7 @@
 
 
         <!--Home and login screen -->
+        <!-- 
         <div id="vueappfaucet">
             <article class="middle">
                 <div id="login" class="columns">
@@ -624,6 +627,7 @@
                     </div>
 
             </div>
+            -->
             <div id="servercheck" class="columns">
                     <div class="column" >
                         <div id="card" class="cardfade">
@@ -672,7 +676,7 @@
                                                     ?>
                                                 </tr>
                                                 <tr>
-                                                
+                                                <!--
                                                 <?php
                                                 //print last update form json file
                                                     foreach($stats as $value => $row){
@@ -682,11 +686,13 @@
                                                         }
                                                     }
                                                     ?>
+                                                -->
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                    <?php echo "<center><p style='margin-bottom: 10px;'>Last update:  " . date("H:i", $stats["lastupdate"]). " UTC</p></center>"?>
+
+                                    <!--  <?php echo "<center><p style='margin-bottom: 10px;'>Last update:  " . date("H:i", $stats["lastupdate"]). " UTC</p></center>"?> -->
                         </div>
                                 
                     </div>
@@ -709,11 +715,11 @@
 
                             <p style="text-align: center;" class="title ">Current rewards:</p>
                             <div style="margin-top: -10px" class="line3"></div>
-                            <?php
+                            <!-- <?php
                                 $data = file_get_contents("ducorewards.json");
                                 $rewards = json_decode($data, true);
 
-                            ?>
+                            ?> -->
                         <nav class="level" style="margin:5px;">
                             <div class="level-item has-text-centered">
                                 <div>
@@ -772,13 +778,14 @@
                         <p>Did you thought you could just enter your username and get free ducos?</p>
                         <p>You have to work to get them, solve this simple quiz and they are yours!</p>
                         <br>
-                        <?php
+
+                        <!-- ?php
                             //Require quiz and echo question if session cookie was set 
                             if(isset($_SESSION["quiz"])){
                                 require_once("quiz.php");
                                 echo  $tasks[$_SESSION["quiz"]];
                             }
-                        ?>
+                        ?> -->
                         <br>
                         <div class="h-captcha" data-sitekey="95e3ff02-1c51-4904-8ba4-d3c6abee2b5b"></div>
                         <br>
