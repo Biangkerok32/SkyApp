@@ -15,3 +15,5 @@ Fauceet
 5. http://faucetforduino.online/
 
 6. https://faucet.nobodyvisit.com/faucet.php
+
+7. https://techcrafter.de/faucet/
