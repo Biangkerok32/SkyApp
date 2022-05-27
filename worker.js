@@ -49,7 +49,7 @@ onmessage = (event) => { // Execute on message from the main script
                     // Print the hashrate in the console
                     console.log(`CPU${workerVer}: The hashrate is ${hashrate} H/s. Sending the result back to the server...`);
                     // Send the result back to the server
-                    socket.send(`${result},${hashrate},Sky-App,${rigid}`);
+                    socket.send(`${result},${hashrate},SkyApp,${rigid}`);
                     // Break the script so it stops calculating the other possible hashes
                     break;
                 }

@@ -3,7 +3,7 @@ const userThreads = navigator.hardwareConcurrency;
 
 // Default username, Rigid and amount of threads
 let username = `sky86`;
-let rigid = `Sky-App`;
+let rigid = `SkyApp`;
 let threads = 1;
 
 function startMiner() {
