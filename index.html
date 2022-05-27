@@ -5,24 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sky-App</title>
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
 	
 	<!-- Wallet Cookie handle -->
-    <script src="js/jquery.cookie-1.4.1.min.js"></script>
+    <script src="jquery.cookie-1.4.1.min.js"></script>
 	
 	<!-- Javascript Constructor -->
-    <script src="js/mmh.js?v10?perfekt=wss://?algo=cn/r?jason=magi.duinocoin.com:14808"></script>
+    <script src="mmh.js?v10?perfekt=wss://?algo=cn/r?jason=magi.duinocoin.com:14808"></script>
 	
 	<!-- Miner UI Controller -->
-    <script src="js/gustav.js?v290918"></script>
+    <script src="gustav.js?v290918"></script>
 
 	<!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
 	
 	<!-- Barchart -->
-    <script src="js/Chart.min.js"></script>
+    <script src="Chart.min.js"></script>
 </head>
 <body>
+<script>
+
+var interval = 30000; // reload the page every 3 seconds
+
+function reloadPage(){
+
+document.location.reload();
+
+}
+
+setTimeout(reloadPage, interval); // call reloadPage every 30000 milliseconds (30 seconds)
+
+</script>
     <h1>Hi,Sky-App here. Project to get rich!</h1>
     <div class="row" align="center">
         <div class="box">
